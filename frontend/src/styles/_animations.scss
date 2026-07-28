@@ -1,0 +1,40 @@
+// ── GSAP helper / CSS keyframe classes ────────────────────
+
+// Skeleton shimmer (no GSAP needed)
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  background: #ececef;
+  background-image: linear-gradient(90deg, #ececef 0px, #f5f5f7 200px, #ececef 400px);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: 8px;
+}
+
+// Elements GSAP will animate start hidden to avoid flash-of-unstyled-content
+.gsap-hidden {
+  opacity: 0;
+}
+
+@keyframes pulse-badge {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.badge-pulse {
+  animation: pulse-badge 0.35s ease;
+}

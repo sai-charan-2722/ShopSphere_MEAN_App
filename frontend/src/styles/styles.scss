@@ -1,0 +1,172 @@
+@use '@angular/material' as mat;
+@use 'variables' as v;
+@use 'animations';
+
+// CDK overlay styles (required for Material dialogs / overlays to position correctly)
+@import '@angular/cdk/overlay-prebuilt.css';
+
+// ── Angular Material theme (M3) with custom colors ────────
+html {
+  color-scheme: light;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$violet-palette,
+        tertiary: mat.$rose-palette,
+      ),
+      typography: Inter,
+      density: 0,
+    )
+  );
+
+  --mat-sys-primary: #{v.$primary};
+  --mat-sys-tertiary: #{v.$accent};
+}
+
+// ── Base / reset ──────────────────────────────────────────
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: v.$font;
+  color: v.$ink;
+  background: v.$bg;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: v.$primary;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+// ── Layout helpers ────────────────────────────────────────
+.container {
+  max-width: v.$container;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.page {
+  min-height: calc(100vh - 140px);
+  padding: 28px 0 60px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-products {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  color: v.$ink;
+}
+
+.muted {
+  color: v.$muted;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: v.$radius-sm;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn-primary {
+  background: v.$primary;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: v.$primary-dark;
+}
+.btn-accent {
+  background: v.$accent;
+  color: #fff;
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid v.$border;
+  color: v.$ink;
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.card {
+  background: v.$surface;
+  border-radius: v.$radius;
+  box-shadow: v.$shadow-sm;
+  border: 1px solid v.$border;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: v.$muted;
+}
+.empty-state .emoji {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+// Utility spacing
+.mt-2 {
+  margin-top: 8px;
+}
+.mt-4 {
+  margin-top: 16px;
+}
+.mt-6 {
+  margin-top: 24px;
+}
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-2 {
+  gap: 8px;
+}
+.gap-4 {
+  gap: 16px;
+}

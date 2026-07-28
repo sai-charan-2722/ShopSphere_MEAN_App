@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: shopsphere-backend
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # ── Add the following manually in the Render dashboard (Environment tab) ──
+      # MONGODB_URI
+      # CLERK_PUBLISHABLE_KEY
+      # CLERK_SECRET_KEY
+      # CLERK_WEBHOOK_SECRET
+      # STRIPE_SECRET_KEY
+      # STRIPE_WEBHOOK_SECRET
+      # STRIPE_CURRENCY (inr)
+      # CLOUDINARY_CLOUD_NAME
+      # CLOUDINARY_API_KEY
+      # CLOUDINARY_API_SECRET
+      # EMAIL_HOST / EMAIL_PORT / EMAIL_USER / EMAIL_PASS / EMAIL_FROM
+      # FRONTEND_URL (your Vercel URL)
