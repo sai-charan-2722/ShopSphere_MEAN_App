@@ -26,3 +26,8 @@ coverage/
 
 # Misc
 *.local
+
+# Claude Code — personal / machine-local overrides (team files are committed)
+CLAUDE.local.md
+.claude/settings.local.md
+.claude/settings.local.json
