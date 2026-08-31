@@ -1,0 +1,5 @@
+# Files copied into new git worktrees (gitignored files aren't carried over by git).
+# Without these, a fresh worktree can't build or run.
+backend/.env
+frontend/src/environments/environment.ts
+.claude/settings.local.json

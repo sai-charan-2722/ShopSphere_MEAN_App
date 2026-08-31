@@ -1,0 +1,11 @@
+{
+  "_comment": "Copy this to settings.local.json (gitignored) for your personal overrides. It merges over settings.json and takes precedence.",
+  "permissions": {
+    "allow": [
+      "Bash(git push*)"
+    ]
+  },
+  "env": {
+    "SHOPSPHERE_STOP_TYPECHECK": "1"
+  }
+}
