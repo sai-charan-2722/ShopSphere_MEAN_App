@@ -27,8 +27,7 @@ export class SignUpComponent implements AfterViewInit {
   async ngAfterViewInit(): Promise<void> {
     const clerk = await this.auth.ready();
     clerk.mountSignUp(this.mount.nativeElement, {
-      routing: 'path',
-      path: '/sign-up',
+      routing: 'hash',
       signInUrl: '/sign-in',
       afterSignUpUrl: '/',
     });

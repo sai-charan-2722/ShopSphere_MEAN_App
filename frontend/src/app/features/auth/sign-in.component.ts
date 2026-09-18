@@ -1,8 +1,15 @@
-import { Component, inject, AfterViewInit, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
+import {
+  Component,
+  inject,
+  AfterViewInit,
+  ElementRef,
+  ViewChild,
+  ChangeDetectionStrategy,
+} from "@angular/core";
+import { AuthService } from "../../core/services/auth.service";
 
 @Component({
-  selector: 'app-sign-in',
+  selector: "app-sign-in",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -21,16 +28,19 @@ import { AuthService } from '../../core/services/auth.service';
   ],
 })
 export class SignInComponent implements AfterViewInit {
-  @ViewChild('clerkMount') mount!: ElementRef<HTMLElement>;
+  @ViewChild("clerkMount") mount!: ElementRef<HTMLElement>;
   private auth = inject(AuthService);
 
   async ngAfterViewInit(): Promise<void> {
-    const clerk = await this.auth.ready();
-    clerk.mountSignIn(this.mount.nativeElement, {
-      routing: 'path',
-      path: '/sign-in',
-      signUpUrl: '/sign-up',
-      afterSignInUrl: '/',
-    });
+    try {
+      const clerk = await this.auth.ready();
+      clerk.mountSignIn(this.mount.nativeElement, {
+        routing: 'hash',
+        signUpUrl: "/sign-up",
+        signInFallbackRedirectUrl: "/",
+      });
+    } catch (error) {
+      console.error("CLERK SIGN-IN ERROR:", error);
+    }
   }
 }

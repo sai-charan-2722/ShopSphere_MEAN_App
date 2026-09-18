@@ -43,6 +43,6 @@ export const appConfig: ApplicationConfig = {
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
 
     // Load the Clerk browser SDK and expose it as window.Clerk before the app renders.
-    provideAppInitializer(() => inject(AuthService).initClerk(environment.clerkPublishableKey)),
+    provideAppInitializer(() => inject(AuthService).initClerk()),
   ],
 };
